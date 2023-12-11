@@ -1,5 +1,4 @@
 import sys
-import time
 
 COLORS = ["red", "blue", "green"]
 MAXBALLS = {
