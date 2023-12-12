@@ -48,53 +48,41 @@ def get_int_from_right(fileLines, i):
     
 
 def check_adjacent(fileLines, i, length):
-    if(fileLines[i-1] in INTS):
-        print("L",end="")
-        print(fileLines[i-1])
-        num = get_int_from_right(fileLines, i-1)
-        print(num)
+    num = 0
     if(fileLines[i+1] in INTS):
         print("R",end="")
-        print(fileLines[i+1])
-        num = get_int_from_left(fileLines,i+1)
+        num += int(fileLines[i+1])
+        print(num)
+    if(fileLines[i-1] in INTS):
+        print("L",end="")
+        num += int(fileLines[i-1])
         print(num)
     if(fileLines[i-length-1] in INTS):
         print("TL",end="")
-        print(fileLines[i-length-1])
-        new_i = find_left(fileLines, i-length-1)
-        num = get_int_from_left(fileLines, new_i)        
+        num += int(fileLines[i-length-1])
         print(num)
     elif(fileLines[i-length] in INTS):
         print("T",end="")
-        print(fileLines[i-length])
-        new_i = find_left(fileLines,i-length)
-        num = get_int_from_left(fileLines, new_i)
+        num += int(fileLines[i-length])
         print(num)
     elif(fileLines[i-length+1] in INTS):
         print("TR",end="")
-        print(fileLines[i-length+1])
-        new_i = find_left(fileLines,i-length+1)
-        num = get_int_from_left(fileLines, new_i)
+        num += int(fileLines[i-length+1])
         print(num)
     if(fileLines[i+length-1] in INTS):
         print("BL",end="")
-        print(fileLines[i+length-1])
-        new_i = find_left(fileLines, i+length-1)
-        num = get_int_from_left(fileLines, new_i)        
+        num += int(fileLines[i+length-1])
         print(num)
     elif(fileLines[i+length] in INTS):
         print("B",end="")
-        print(fileLines[i+length])
-        new_i = find_left(fileLines,i+length)
-        num = get_int_from_left(fileLines, new_i)
+        num += int(fileLines[i+length])
         print(num)
     elif(fileLines[i+length+1] in INTS):
         print("BR",end="")
-        print(fileLines[i+length+1])
-        new_i = find_left(fileLines,i+length+1)
-        num = get_int_from_left(fileLines, new_i)
+        num += int(fileLines[i+length+1])
         print(num)
     print("Ret num: " + str(num))
+
     return int(num)
 
 #TODO
