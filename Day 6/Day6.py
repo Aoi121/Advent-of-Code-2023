@@ -15,6 +15,12 @@ def parse_file(input_file):
     start = input_file.find(":") + 1
     return input_file[start:].split()
 
+def parse_file_no_space(input_file):
+    input_file = input_file.replace(" ", "")
+    input_file = input_file[:-1]
+    start = input_file.find(":") + 1
+    return input_file[start:]
+
 def calculate_times(time, record):
     #22 v 21
     #Short circuit for speed:
@@ -33,10 +39,10 @@ def calculate_times(time, record):
         distance = i * remaning_time
         if(distance < prev_distance):
             if(time % 2 == 0):
-                print(new_records)
+                #print(new_records)
                 return (len(new_records) * 2) - 1
             else:
-                print(new_records)
+                #print(new_records)
                 return (len(new_records) - 1) * 2
         if(distance > record):
             new_records.append(distance)
@@ -45,13 +51,22 @@ def calculate_times(time, record):
 def main():
     input_file = import_file() 
     lines = input_file.readlines()
+
+    # 1 Star solution
     times = parse_file(lines[0])
     records = parse_file(lines[1])
     totals = 1
     for i in range(0,len(times)):
         num_records = calculate_times(times[i],records[i])
         totals = totals * num_records
-    print(totals)
+    print("1 Star: " + str(totals))
+
+    #2 Star solution
+    time = parse_file_no_space(lines[0])
+    records = parse_file_no_space(lines[1])
+    print("Calculating...")
+    num_records = calculate_times(time,records)
+    print("2 Star: " + str(num_records))
 
 if __name__ == "__main__":
     main()
